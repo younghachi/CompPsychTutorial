@@ -1,7 +1,7 @@
 site_name: CompPsych
 site_description: A tidy tutorial for computational psychology
 site_author: Huaqi Yang
-site_url: https://younghachi.github.io/tutorial
+site_url: https://younghachi.github.io/CompPsychTutorial/
 
 theme:
   name: material
