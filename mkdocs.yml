@@ -1,0 +1,46 @@
+site_name: CompPsych
+site_description: A tidy tutorial for computational psychology
+site_author: Huaqi Yang
+site_url: https://younghachi.github.io/tutorial
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换到深色模式
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换到浅色模式
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.tabbed
+
+nav:
+  - 首页: index.md
+  - 第一章:
+    - 入门指南: chapter1/intro.md
+    - 基础概念: chapter1/concepts.md
+  - 关于: about.md
