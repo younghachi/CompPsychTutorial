@@ -1,0 +1,26 @@
+# 站点配置
+title: "我的教程"
+description: "这是一个详细的教程文档"
+theme: minima  # GitHub Pages 支持的主题
+
+# 作者信息
+author:
+  name: "Huaqi Yang"
+  email: "yang.huaqi@outlook.com"
+
+# 导航配置（可选）
+header_pages:
+  - index.md
+  - chapter1.md
+  - chapter2.md
+
+# 插件
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# 其他配置
+markdown: kramdown
+highlighter: rouge
+permalink: /:title/
