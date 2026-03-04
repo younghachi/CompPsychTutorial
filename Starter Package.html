@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&#x79d1;&#x7814;&#x65b0;&#x624b;&#x6574;&#x5408;&#x5305;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+/* From extension marp-team.marp-vscode */
+#__marp-vscode {
+  all: revert;
+}
+
+/* Override VS Code default CSS rules reverting to initial
+   https://github.com/microsoft/vscode/blob/master/src/vs/workbench/contrib/webview/browser/pre/main.js#L53 */
+html:has(body.marp-vscode) {
+  padding: 0;
+}
+
+body.marp-vscode {
+  padding: 0;
+}
+
+body.marp-vscode img {
+  max-width: unset;
+  max-height: unset;
+}
+
+body.marp-vscode a,
+body.marp-vscode a:hover,
+body.marp-vscode code {
+  color: unset;
+}
+
+body.marp-vscode blockquote {
+  background: unset;
+  border-color: unset;
+}
+
+@media screen {
+  body.marp-vscode {
+    overflow-y: scroll;
+
+    /* stylelint-disable-next-line selector-class-pattern */
+    &.showEditorSelection {
+      --marp-vscode-highlight-color: rgb(255 255 255 / 40%);
+
+      &.vscode-light {
+        --marp-vscode-highlight-color: rgb(0 0 0 / 15%);
+      }
+
+      &.vscode-high-contrast {
+        --marp-vscode-highlight-color: rgb(255 160 0 / 70%);
+      }
+    }
+  }
+
+  #__marp-vscode [data-marp-vscode-slide-wrapper] {
+    margin: 20px;
+    position: relative;
+
+    &.code-active-line,
+    &:has(.code-active-line) {
+      &::before {
+        position: absolute;
+        content: '';
+        inset: -7px;
+        border: 3px solid var(--marp-vscode-highlight-color, transparent);
+        pointer-events: none;
+      }
+    }
+  }
+
+  #__marp-vscode svg[data-marpit-svg] {
+    box-shadow: 0 5px 10px rgb(0 0 0 / 25%);
+    display: block;
+    margin: 0;
+  }
+
+  /* Based on https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+  #code-csp-warning {
+    background-color: #444;
+    box-shadow: 1px 1px 1px rgb(0 0 0 / 25%);
+    color: white;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 22px;
+    margin: 16px;
+    padding: 6px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    overflow-wrap: break-word;
+  }
+
+  #code-csp-warning:hover {
+    text-decoration: none;
+    background-color: #007acc;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 25%);
+  }
+}
+
+@media print {
+  body.marp-vscode #code-csp-warning {
+    display: none;
+  }
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="科研新手整合包">科研新手整合包</h1>
+<p>如果拿到<code>.md</code>格式的文件，请使用VS Code、<a href="https://dillinger.io/">Dillinger</a>等markdwon解释器阅读。</p>
+<h2 id="1-文献管理">1. 文献管理</h2>
+<h3 id="zotero">Zotero</h3>
+<h4 id="使用zotero保存文献">使用Zotero保存文献</h4>
+<ul>
+<li>安装Zotero与浏览器插件：<a href="https://www.zotero.org/download/">下载Zotero</a></li>
+<li>Zotero浏览器插件<br>
+<img src="https://pic1.imgdb.cn/item/68fde48e3203f7be00a0682e.png" alt="Edge浏览器中的Zotero插件"></li>
+<li>在浏览器插件栏固定显示插件<br>
+<img src="https://pic1.imgdb.cn/item/68fde48e3203f7be00a0682f.png" alt="常驻显示"></li>
+<li>打开Zotero软件，然后在网页上保存文献<br>
+<img src="https://pic1.imgdb.cn/item/68fde48e3203f7be00a0682d.png" alt="变成这种图标时说明可以保存"></li>
+</ul>
+<h4 id="zotero插件">Zotero插件</h4>
+<ul>
+<li>下载Zotero插件：<a href="https://zotero-chinese.com/plugins/">Zotero插件商店</a></li>
+<li>在Zotero中安装插件<br>
+<img src="https://pic1.imgdb.cn/item/68fde6cc3203f7be00a068d4.png" alt="Step 1">
+<img src="https://pic1.imgdb.cn/item/68fde6cc3203f7be00a068d5.png" alt="Step 2"></li>
+<li>推荐插件
+<ul>
+<li>Better Notes for Zotero</li>
+<li>Ethereal Style</li>
+<li>Easier Citation</li>
+<li>Translate for Zotero</li>
+<li>Zotero Attanger
+<ul>
+<li>使用OneDrive等网盘实现附件管理<br>
+<img src="https://pic1.imgdb.cn/item/68fde57d3203f7be00a0688a.png" alt="Zotero附件管理"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="在word中使用zotero">在Word中使用Zotero</h4>
+<p><img src="https://pic1.imgdb.cn/item/68fde41a3203f7be00a06813.png" alt="Zotero的Word插件"></p>
+<ul>
+<li>插入/更改引用</li>
+<li>插入引文目录</li>
+<li>更改引用风格<br>
+<img src="https://pic1.imgdb.cn/item/68fde41b3203f7be00a06816.png" alt="根据期刊要求选择"></li>
+<li>（可选）更改插入引用的快捷键<br>
+<img src="https://pic1.imgdb.cn/item/68fde41b3203f7be00a06815.png" alt="alt text"><br>
+<img src="https://pic1.imgdb.cn/item/68fde41b3203f7be00a06814.png" alt="alt text"></li>
+</ul>
+<h3 id="文献查找">文献查找</h3>
+<h4 id="在哪里找文献">在哪里找文献？</h4>
+<ul>
+<li>准备好梯子</li>
+<li><a href="https://scholar.google.com/">Google Scholar</a>
+<ul>
+<li>关键词的选择</li>
+<li>筛选与高级搜索
+<ul>
+<li>限定期刊</li>
+<li>限定发表时间</li>
+<li>限定作者</li>
+</ul>
+</li>
+<li>被引搜索（Cited by）</li>
+<li>学术订阅</li>
+<li>学术主页</li>
+</ul>
+</li>
+<li><a href="https://consensus.app/search/">Consensus</a>
+<ul>
+<li>提一个精准的问题</li>
+<li>限定研究领域
+<ul>
+<li>In the field of moral psychology/cognitive neuroscience...</li>
+</ul>
+</li>
+<li>问题可以用是/否回答
+<ul>
+<li>Do advantage inequality and disadvantage inequality involve different brain network?</li>
+<li>Is there a pathway that connects the amygdala and vmPFC?</li>
+</ul>
+</li>
+<li>Consensus综述（50篇文献）</li>
+</ul>
+</li>
+<li><a href="https://www.bohrium.com/intro">玻尔学术</a></li>
+<li>课题组/实验室主页</li>
+</ul>
+<h4 id="找什么样的文献">找什么样的文献？</h4>
+<ul>
+<li>好期刊
+<ul>
+<li>中科院一区或者二区top（心理学、神经科学、医学、精神病学）</li>
+<li>Cell、Nature、Science及其子刊</li>
+<li>各学会/协会会刊、美国科学院、英国皇家学会</li>
+<li>年鉴(Annual)、评论(Review)、公报(Bulletin)系列</li>
+<li>金牌OA
+<ul>
+<li>eLife、PLOS Computational Biology、Science Advances...</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>好作者
+<ul>
+<li>你知道他是大佬（T. Sharot、L. Hackel、R. Dolan、Yina Ma）</li>
+<li>你在这个领域的多篇文献见过他的名字或他的单位（一作、通讯）</li>
+<li>他的工作单位/师承很厉害</li>
+<li>他的H-index很高</li>
+</ul>
+</li>
+<li>高引用量</li>
+</ul>
+<h4 id="在哪里找pdf全文">在哪里找PDF全文？</h4>
+<ul>
+<li><a href="https://www.ablesci.com/">科研通</a></li>
+<li><a href="https://www.researchgate.net/">Research Gate</a></li>
+<li>Research Square</li>
+<li>ProQuest</li>
+<li><a href="https://zh.z-library.sk/">Z-Library</a>（电子书）</li>
+</ul>
+<h3 id="文献阅读">文献阅读</h3>
+<h4 id="摘要提供的信息">摘要提供的信息</h4>
+<p><img src="https://pic1.imgdb.cn/item/68fde48e3203f7be00a06830.png" alt="一段摘要"></p>
+<ul>
+<li>研究主题：整合社会与非社会学习的适应性行为的机制</li>
+<li>研究方法：在Minecraft里做集体觅食任务</li>
+<li>研究结果：行为指标体现了空间与时序上的互动行为</li>
+<li>对结果的解释、结论：<strong>适应能力</strong>能够预测任务表现</li>
+</ul>
+<h4 id="找关键内容">找关键内容</h4>
+<ul>
+<li>引言前3段：提出研究问题
+<blockquote>
+<p><img src="https://pic1.imgdb.cn/item/68fde57d3203f7be00a06889.png" alt="前言"></p>
+</blockquote>
+</li>
+<li>引言倒数3段：概况研究方法
+<blockquote>
+<p><img src="https://pic1.imgdb.cn/item/68fde57d3203f7be00a0688b.png" alt="方法"></p>
+</blockquote>
+</li>
+<li>摘要与讨论第一段：核心结果
+<blockquote>
+<p><img src="https://pic1.imgdb.cn/item/68fde6cc3203f7be00a068d6.png" alt="讨论"></p>
+</blockquote>
+</li>
+<li>结论与讨论第一段：对核心结果的解读
+<blockquote>
+<p><img src="https://pic1.imgdb.cn/item/68fde3603203f7be00a067c5.png" alt="结论"></p>
+</blockquote>
+</li>
+<li>方法
+<ul>
+<li>样本量、样本特征</li>
+<li>实验设计与流程：新设计解决了哪些GAP？</li>
+<li>核心指标：怎么定义？为什么这个指标能回答研究问题？</li>
+<li>主要分析方法：怎么对指标进行检验或者计算以回答问题？</li>
+</ul>
+</li>
+<li>图表
+<ul>
+<li>研究框架与实验流程<br>
+<img src="https://pic1.imgdb.cn/item/68fde8113203f7be00a06929.png" alt="实验流程"></li>
+<li>关注的“效应”与“指标”结果<br>
+<img src="https://pic1.imgdb.cn/item/68fde8113203f7be00a0692a.png" alt="实验结果">
+<blockquote>
+<p>社会与非社会条件下，环境特点的效应</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>补充材料 Supplementary
+<ul>
+<li>未写清的方法细节</li>
+<li>次要结果</li>
+<li>支撑性验证结果</li>
+</ul>
+</li>
+</ul>
+<h4 id="查找引用">查找引用</h4>
+<ul>
+<li>不同的引用格式
+<ul>
+<li>APA：找作者名+年份
+<ul>
+<li>原文：...when the outcome is a categorical variable, such as in the well-known “Weather Prediction Task” (Gluck, Shohamy, &amp; Myers, 2002; <strong>Speekenbrink</strong>, Channon, &amp; Shanks, <strong>2008</strong>).</li>
+<li>引文目录：<strong>Speekenbrink, M.</strong>, Channon, S., &amp; Shanks, D. R. (<strong>2008</strong>). Learning strategies in amnesia. <em>Neuroscience and Biobehavioral Reviews</em>, 32, 292–310. doi: 10.1016/j.neubiorev.2007.07.005</li>
+</ul>
+</li>
+<li>GB/Numeric style：找序号
+<ul>
+<li>原文：... based on context-dependent strategies that compare the quality of individual vs. social information <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mrow><mn>4</mn><mo separator="true">,</mo><mn>9</mn><mo separator="true">,</mo><mn>10</mn></mrow></msup></mrow><annotation encoding="application/x-tex">^{4,9,10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span><span class="mpunct mtight">,</span><span class="mord mtight">9</span><span class="mpunct mtight">,</span><span class="mord mtight">10</span></span></span></span></span></span></span></span></span></span></span></span>.</li>
+<li>引文目录：<strong>4.</strong> Enquist, M. &amp; Ghirlanda, S. Evolution of social learning does not explain the origin of human cumulative culture. <em>J. Theor. Biol.</em> 246, 129–135 (2007).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-使用ai">2. 使用AI</h2>
+<h3 id="检验你的idea">检验你的idea</h3>
+<ul>
+<li>要求AI持有与你相反的观点，与AI辩论</li>
+<li>要求AI扮演顶刊级别的审稿人，批判自己的论文</li>
+<li>要求AI给出对立答案的成立条件</li>
+<li>要求AI明确标注不确定的内容、列出引用源</li>
+<li>同时使用两个AI，让它们互相反驳</li>
+<li>在新的临时会话中，让AI重新评估之前的总结</li>
+</ul>
+<h3 id="研究助手">研究助手</h3>
+<ul>
+<li>让AI评估你的研究
+<ul>
+<li>我在做一个什么样的研究（Methods）</li>
+<li>范式、变量、模型</li>
+<li>我的假设是什么/我想验证什么/我想通过数据知道什么</li>
+<li>如何解读我的分析结果</li>
+</ul>
+</li>
+<li>让AI读文献
+<ul>
+<li>研究问题与结论</li>
+<li>样本量与采样方法</li>
+<li>实验设计与创新点</li>
+<li>核心指标的计算与解读</li>
+<li>与我的研究的关系</li>
+<li>核心引用文献</li>
+</ul>
+</li>
+<li>让AI帮自己学习：什么是计算模型？
+<ul>
+<li>明确需求
+<ul>
+<li>身份背景：我是心理学专业的硕士研究生</li>
+<li>学习动机：需要使用计算模型方法（如强化学习）进行研究</li>
+<li>背景知识：但是我没有相关的数学与编程基础</li>
+<li>学习目标：学到什么程度（具体到项目中）？</li>
+</ul>
+</li>
+<li>声明自己是新手，要求使用高中生都可以理解的类比</li>
+<li>让AI设计学习计划：知识点、大纲、进度安排、预期目标</li>
+<li>让AI提问并评估，检验自己的掌握程度</li>
+<li>知识复述：Please check if I understand correctly</li>
+</ul>
+</li>
+<li>不同AI的特点
+<ul>
+<li>Gemini：写作，图片制作</li>
+<li>GPT：思考或者写代码</li>
+<li>Claude：写代码</li>
+<li>Kimi：科普工具</li>
+</ul>
+</li>
+</ul>
+<h3 id="一些可能有用的命令">一些（可能有用的）命令</h3>
+<ul>
+<li>Be critical and strict, it's OK to respond harshly</li>
+<li>Never catering or flattering me</li>
+<li>Never trying to make a consistent story to justify your ideas</li>
+<li>Think step by step...</li>
+<li>Do not provide further suggestion unless I explicitly request you do so</li>
+<li>待更新</li>
+</ul>
+<h3 id="怎么让ai帮忙改代码">怎么让AI帮忙改代码？</h3>
+<ul>
+<li><em>错误日志</em>是必需的！</li>
+<li>与错误日志相关的前后5行代码</li>
+<li>如果在用包中提供的函数，给AI看函数说明</li>
+<li>期望结果与实际结果</li>
+<li>开发环境：平台与包</li>
+<li>伪代码：我心中的处理流程是怎么样的</li>
+</ul>
+<h2 id="3-计算模型">3. 计算模型</h2>
+<h3 id="理论模型与计算模型">理论模型与计算模型</h3>
+<ul>
+<li>理论：用一种idea描述、解释现象</li>
+<li>理论模型：把idea结构化、标准化描述</li>
+<li>理论模型可以预测现象，但无法用数据检验</li>
+<li>计算模型：如何证明哪个理论更“好”？
+<ul>
+<li>用数学公式表达理论模型，让数据自己说话</li>
+<li>使用数学指标比较模型</li>
+</ul>
+</li>
+<li>计算模型的成分
+<ul>
+<li>输出：模型最终做出的预测是什么？</li>
+<li>变量：实验中采集到的数据</li>
+<li>参数：量化每个变量的影响</li>
+<li>算法：数据按照什么样的规则组合、计算，得到结果</li>
+</ul>
+</li>
+</ul>
+<h3 id="估计模型参数">估计模型参数</h3>
+<ul>
+<li>按照设计好的模型，参数取什么值能够让模型的输出更接近真实数据？</li>
+<li>频率学派方法：计算量小但无法反映参数的不确定性
+<ul>
+<li>最小二乘法</li>
+<li>极大似然估计</li>
+</ul>
+</li>
+<li>贝叶斯学派方法：得到参数的分布但计算复杂
+<ul>
+<li>最大后验估计</li>
+<li>变分贝叶斯</li>
+<li>MCMC</li>
+</ul>
+</li>
+</ul>
+<h3 id="评估模型">评估模型</h3>
+<ul>
+<li>残差估计：有多少变异性是模型无法解释的？</li>
+<li>模型拟合系数：模型预测与真实数据的接近程度
+<ul>
+<li>R²</li>
+<li>对数似然 log-likelihood</li>
+<li>均方根误差 MSE</li>
+<li>预测准确率 Prediction</li>
+</ul>
+</li>
+<li>复杂度惩罚：结合拟合度与模型复杂度（参数的数量）
+<ul>
+<li>AIC、wAIC</li>
+<li>BIC</li>
+<li>LOO-VC</li>
+</ul>
+</li>
+<li>模型组比较：哪个模型解释效力最好？
+<ul>
+<li>PXP</li>
+</ul>
+</li>
+<li>参数恢复：模型的可靠性、稳定性</li>
+<li>模型恢复：模型的有效性、可区分性</li>
+</ul>
+<h3 id="经典模型理论框架">经典模型（理论框架）</h3>
+<ul>
+<li>
+<p>结构方程模型（线性回归模型）：最简的数学描述</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><msub><mi>b</mi><mn>0</mn></msub><msub><mi>x</mi><mn>0</mn></msub><mo>+</mo><msub><mi>b</mi><mn>1</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>+</mo><msub><mi>b</mi><mi>n</mi></msub><msub><mi>x</mi><mi>n</mi></msub><mo>+</mo><mi>e</mi></mrow><annotation encoding="application/x-tex">Y = b_0x_0+b_1x_1+...+b_nx_n+e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">...</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">e</span></span></span></span></li>
+<li>管它这那的，全都当作线性的</li>
+</ul>
+</li>
+<li>
+<p>效用模型：理性人的经济决策</p>
+<ul>
+<li>核心思想：人们根据选项的“期望效用”做决策</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>c</mi><mi>h</mi><mi>o</mi><mi>i</mi><mi>c</mi><mi>e</mi><mo stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(choice)=f(U)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">c</span><span class="mord mathnormal">h</span><span class="mord mathnormal">o</span><span class="mord mathnormal">i</span><span class="mord mathnormal">ce</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mclose">)</span></span></span></span></li>
+<li>概念
+<ul>
+<li>效用 Utility：基于什么做选择？</li>
+<li>折扣 Discount：有因素降低了效用</li>
+<li>权衡 Weight/Trade off：整合多个因素构造效用</li>
+<li>Sigmoid与Softmax：从效用到选择概率（二选一、多选一）</li>
+</ul>
+</li>
+<li>适用情境：需要决策的任务</li>
+</ul>
+</li>
+<li>
+<p>强化学习模型：巴甫洛夫，强化与惩罚</p>
+<ul>
+<li>核心思想：经验中的奖赏与惩罚塑造了个体的行为</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>t</mi></msub><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>Q</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>s</mi><mo stretchy="false">)</mo><mo>+</mo><mi>α</mi><mo stretchy="false">(</mo><msub><mi>R</mi><mi>t</mi></msub><mo>−</mo><msub><mi>Q</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>s</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Q_t(a,s)=Q_{t-1}(a,s) +\alpha (R_t-Q_{t-1}(a,s))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">s</span><span class="mclose">))</span></span></span></span></li>
+<li>概念
+<ul>
+<li>决策价值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>t</mi></msub><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Q_t(a,s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span>：效用模型中的期望效用</li>
+<li>反馈 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">R_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：奖赏，或者惩罚</li>
+<li>状态 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span>：当前面对的状态（哪两个老虎机？）</li>
+<li>动作 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span>：在状态<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span>的情况下，做出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span>动作</li>
+<li>学习率 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span>：对结果反馈的敏感度</li>
+</ul>
+</li>
+<li>适用情境：需要学习的任务</li>
+</ul>
+</li>
+<li>
+<p>证据积累模型：决策的过程</p>
+<p><img src="https://pic1.imgdb.cn/item/68fde4d13203f7be00a06852.png" alt="DDM"></p>
+<ul>
+<li>核心思想：逐步积累证据，直到达到阈限，最终做出决策</li>
+<li>概念
+<ul>
+<li>漂移率 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>：证据积累的速度</li>
+<li>决策阈限 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span>：做出行为反应所需要的证据量</li>
+<li>起始偏差 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span>：在积累证据之前的预期</li>
+</ul>
+</li>
+<li>适用情境：关注反应时，需要决策的任务</li>
+</ul>
+</li>
+<li>
+<p>贝叶斯模型：主观信念与不确定性</p>
+<ul>
+<li>核心思想：行为由个体信念决定；个体信念由先验信念与观察证据结合</li>
+<li>概念
+<ul>
+<li>信念</li>
+<li>概率分布</li>
+<li>证据</li>
+</ul>
+</li>
+<li>适用情境：需要表达不确定性、主观信念、推断的任务</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-开发的基本概念">4. 开发的基本概念</h2>
+<p>用做饭来描述开发过程：想象你的最终目标是做一顿饭，现在你买了一个有多个房间，但是所有房间都是厨房的房子。</p>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>类比</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>操作系统 OS</td>
+<td>房子。房子可以套房子（虚拟机，如WSL），但是占地面积永远只有那么大。</td>
+<td>Windows，Linux，MacOS</td>
+</tr>
+<tr>
+<td>核 Kernel/引擎 Engine/语言 Language</td>
+<td>不同的厨房风格：西式，中式，露天。实际上一个厨房可能混搭了不同风格。</td>
+<td>MATLAB，R，Python</td>
+</tr>
+<tr>
+<td>包 Package/库 Library</td>
+<td>预制菜或者料理包。想做火锅时候不用自己做火锅底料，直接买现成的就可以——而且不同品牌有不同口味。菜谱会告诉你它用了哪些料理包。</td>
+<td>FieldTrip，ggplot2，PyMC</td>
+</tr>
+<tr>
+<td>环境 Environment</td>
+<td>房子里面的不同厨房，包括厨房里的所有料理包。一道菜只能在一个厨房完成制作。甚至有些菜谱对厨房的要求非常严格，把海盐换成井盐都做不出菜。</td>
+<td>MATLAB R2024a，R 4.4，Python 11.3</td>
+</tr>
+<tr>
+<td>Docker</td>
+<td>装修公司按照标准模板搭建好的厨房。拎锅入住。</td>
+<td>Docker hDDM，datascience notebook</td>
+</tr>
+<tr>
+<td>镜像源 Mirror</td>
+<td>买料理包的超市。大部分菜谱都假定你要在盒马买料理包，但实际上本地可能根本没开盒马。所以你要修改菜谱，写清楚自己可以在楼下的超市买料理包。</td>
+<td>CRAN 清华源</td>
+</tr>
+<tr>
+<td>集成开发环境 IDE</td>
+<td>你实际使用的一套厨具。每种厨房可能有自己最适合的一套厨具，但也有厨具可以用在所有风格的厨房。</td>
+<td>R Studio，VS Code，PyCharm</td>
+</tr>
+<tr>
+<td>终端 Terminal/控制台 Console</td>
+<td>原教旨主义，极简厨房，看起来就是个火坑。实际上最开始就是用它做饭的。</td>
+<td>Power Shell，cmd，R Terminal</td>
+</tr>
+<tr>
+<td>脚本 Script</td>
+<td>菜谱。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-matlab">5. MATLAB</h2>
+<h3 id="什么时候用matlab">什么时候用MATLAB？</h3>
+<ul>
+<li>神经数据处理（常用）
+<ul>
+<li>SPM：有UI的全能工具包，MRI为主</li>
+<li>Brainstorm：有UI的全能工具包</li>
+<li>EEGLAB：有UI的脑电工具包</li>
+<li>NIRS_KIT：有UI的近红外工具包</li>
+<li>FieldTrip：有UI的全能工具包</li>
+<li>BrainNet Viewer：有UI的脑模型绘图</li>
+</ul>
+</li>
+<li>计算模型&amp;机器学习（一般）
+<ul>
+<li>Machine Learning Toolbox：自带工具箱，支持SVM、KNN、RF、NB等常用算法</li>
+<li>Variational Bayesian Analysis：基于变分贝叶斯的计算模型</li>
+</ul>
+</li>
+<li>实验呈现（较少）
+<ul>
+<li>Psychtoolbox：无UI的实验程序编写</li>
+</ul>
+</li>
+<li>作图（视情况）
+<ul>
+<li>如果你的整个分析流程都在MATLAB中实现，就直接用MATLAB作图</li>
+</ul>
+</li>
+<li>普通统计（罕见）
+<ul>
+<li>可以，但完全没有必要</li>
+</ul>
+</li>
+</ul>
+<h3 id="什么时候避免用matlab">什么时候避免用MATLAB？</h3>
+<ul>
+<li>当你声明自己使用MATLAB进行数据处理，于是期刊要求提供MATLAB授权证明，而你没有证明</li>
+<li>需要在不同机器上复现，但是别的机器没有装MATLAB</li>
+<li>用Psychotoolbox写了实验程序，但是被试机的性能太差</li>
+</ul>
+<h3 id="怎么用matlab">怎么用MATLAB？</h3>
+<h4 id="安装">安装</h4>
+<p>在网上自行寻找资源，R2018b以上版本，避免a系列版本号（测试版）</p>
+<h5 id="实例安装spm工具箱">实例：安装SPM工具箱</h5>
+<p>默认库路径：</p>
+<blockquote>
+<p>C:/User/用户名/Documents/MATLAB</p>
+</blockquote>
+<p>在MATLAB中安装新工具包：</p>
+<p><img src="https://pic1.imgdb.cn/item/68fde3603203f7be00a067c3.png" alt="alt text"></p>
+<ul>
+<li>在网站<a href="https://www.fil.ion.ucl.ac.uk/spm/software/spm12/">下载SPM工具箱</a></li>
+<li>把下载得到的压缩包解压到MATLAB库路径（如：C:/User/用户名/Documents/MATLAB/spm12）</li>
+<li>在MATLAB中设置路径</li>
+<li>添加文件夹及子文件夹
+<blockquote>
+<p>不同工具箱对该设置有不同要求，如EEGLAB/FieldTrip需要你运行安装脚本来进行初始化配置</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="写脚本">写脚本</h4>
+<ul>
+<li>新建MATLAB脚本（<code>.m</code>文件），在里面写代码</li>
+<li>注意你的<strong>工作路径</strong>！！
+<ul>
+<li>所有语言、平台都有工作路径(Current Working Directory)的概念</li>
+<li>在工作路径下的文件操作不需要绝对路径，当前路径以<code>.\</code>表示</li>
+<li>假设工作路径是<code>F:\Project\learning\</code>，直接读取<code>learning.csv</code>会在工作路径下查找文件(<code>.\learning.csv</code>)</li>
+<li>无法直接读取其他路径下的文件，需使用绝对路径(<code>C:\User\HP\Documents\data.csv</code>)</li>
+</ul>
+</li>
+<li>在右侧的变量区查看数据</li>
+<li>在控制台做小测试</li>
+<li>使用分节符<code>%%</code>控制脚本运行（按节执行，快捷键<code>Ctrl+Enter</code>）</li>
+<li>使用断点、条件断点、逐步执行、步入执行来做调试</li>
+</ul>
+<h2 id="6-r">6. R</h2>
+<h3 id="什么时候用r">什么时候用R？</h3>
+<ul>
+<li>
+<p>数据清洗与整理（预处理）</p>
+<ul>
+<li>整理什么样的数据？
+<ul>
+<li>实验程序记录的、每个被试的Raw行为数据</li>
+<li>问卷星等平台采集的、所有被试的Raw问卷数据<br>
+<img src="https://pic1.imgdb.cn/item/68fde3603203f7be00a067c2.png" alt="原始数据"></li>
+</ul>
+</li>
+</ul>
+<img src="https://pic1.imgdb.cn/item/68fde3603203f7be00a067c6.png" alt="原始数据的内容" width="100%">
+<ul>
+<li>怎么整理？
+<ul>
+<li>剔除没用的变量（如采集时间）</li>
+<li>用易懂的方式重新命名变量和值（如<code>option2.onset.time</code>→<code>RT</code>）</li>
+<li>数据过滤与质量检查</li>
+<li>使用相同的流程处理所有被试的数据</li>
+<li>使用易懂的方式命名新的数据表</li>
+</ul>
+</li>
+<li>整理到什么样子？
+<ul>
+<li>每个被试一份预处理过的数据表，所有被试的数据表有相同的格式</li>
+<li>一份个体水平的所有被试的数据表（简单拼接）<br>
+<img src="https://pic1.imgdb.cn/item/68fde3603203f7be00a067c4.png" alt="个体水平预处理"></li>
+<li>一份组水平的汇总数据表（跨被试平均）<br>
+<img src="https://pic1.imgdb.cn/item/68fde57d3203f7be00a06888.png" alt="跨被试平均"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>你能想到的大部分统计功能</p>
+<ul>
+<li>统计检验：summarise，correlation，ttest，ANOVA，regression</li>
+<li>计算建模：ggdmc，rstan，rjags</li>
+</ul>
+</li>
+<li>
+<p>绘图</p>
+<ul>
+<li>ggplot2，tidyplots</li>
+</ul>
+</li>
+</ul>
+<h3 id="什么时候避免用r">什么时候避免用R？</h3>
+<p>如果你的数据量非常非常大，R的运算会非常非常慢</p>
+<h3 id="怎么用r">怎么用R？</h3>
+<h4 id="环境配置">环境配置</h4>
+<ul>
+<li>安装R，4.4及以上版本
+<ul>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/windows/">下载R</a></li>
+<li>为避免权限问题，建议仅为当前用户安装</li>
+</ul>
+</li>
+<li>（可选）安装Rtools，注意需要与安装的R版本一致
+<ul>
+<li><a href="https://cran.r-project.org/bin/windows/Rtools/">下载Rtools</a></li>
+<li>某些R包需要Rtools编译</li>
+</ul>
+</li>
+<li>安装R Studio
+<ul>
+<li><a href="https://posit.co/download/rstudio-desktop/">下载R Studio</a></li>
+<li>真正写代码的地方</li>
+</ul>
+</li>
+<li>（可选）修改配置文件
+<ul>
+<li>
+<p>打开<code>我的文档\.Rprofile</code></p>
+</li>
+<li>
+<p>新增一行配置</p>
+<pre><code class="language-R">options<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;repos&quot;</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span>CRAN<span class="hljs-operator">=</span><span class="hljs-string">&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="写脚本-1">写脚本</h4>
+<ul>
+<li>
+<p>打开R Studio，选择安装好的R</p>
+</li>
+<li>
+<p>新建R脚本(<code>.R</code>文件)</p>
+</li>
+<li>
+<p>使用<code>install.pakcage()</code>命令安装新的包，<code>library()</code>加载包</p>
+<pre><code class="language-R">install.package<span class="hljs-punctuation">(</span><span class="hljs-string">&#x27;bruceR&#x27;</span><span class="hljs-punctuation">)</span>
+library<span class="hljs-punctuation">(</span><span class="hljs-string">&#x27;bruceR&#x27;</span><span class="hljs-punctuation">)</span>
+</code></pre>
+</li>
+<li>
+<p>除语法，其余方面类似MATLAB</p>
+</li>
+</ul>
+<h2 id="7-python">7. Python</h2>
+<h3 id="什么时候用python">什么时候用Python？</h3>
+<ul>
+<li>你能想到的大部分工作，不限于数据分析，都可以用Python实现</li>
+<li>未来想从事技术工种（包括用研）</li>
+<li>使用PsychoPy进行实验程序设计</li>
+<li>使用Python MNE进行遵循神经科学统一规范的分析</li>
+<li>当作者提供的代码是Python的</li>
+</ul>
+<h3 id="什么时候避免用python">什么时候避免用Python？</h3>
+<ul>
+<li>Python比R、MATLAB语法更复杂，环境配置更麻烦……</li>
+<li>如果没有明确的需求，可以不用Python</li>
+</ul>
+<h3 id="怎么使用python">怎么使用Python？</h3>
+<ul>
+<li>安装Python
+<ul>
+<li><a href="https://www.python.org/downloads/">下载Python</a></li>
+</ul>
+</li>
+<li>待更新</li>
+</ul>
+<h2 id="8-jupyter-lab">8. Jupyter Lab</h2>
+<h3 id="jupyter是干嘛的">Jupyter是干嘛的？</h3>
+<ul>
+<li>Jupyter Lab是一个在浏览器里就可以写代码、运行代码、画图、做笔记、展示结果的多功能平台。</li>
+<li>支持多种语言，通过内核（Kernel）切换你要使用的语言。
+<ul>
+<li><strong>Ju</strong>lia+<strong>Py</strong>thon+<strong>R</strong> = <strong>Ju-pyte-r</strong></li>
+</ul>
+</li>
+<li>和在IDE里写脚本有什么区别？</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>特点</th>
+<th>普通脚本(.py / .m / .R)</th>
+<th>Jupyter Notebook</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>运行方式</td>
+<td>一次运行整个脚本</td>
+<td>可以分块运行（cell）</td>
+</tr>
+<tr>
+<td>输出结果</td>
+<td>只显示最后一行</td>
+<td>每个代码块都可以单独显示输出</td>
+</tr>
+<tr>
+<td>适合场景</td>
+<td>批量计算、最终分析脚本</td>
+<td>探索性分析、可视化、教学、展示</td>
+</tr>
+<tr>
+<td>可读性</td>
+<td>不间断的一整段代码</td>
+<td>对代码块进行可视化分割，支持用Markdown 文本、图片进行详细流程记录</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Jupyter编辑器界面：markdown（文本）、代码块、代码输出<br>
+<img src="https://pic1.imgdb.cn/item/68fdee3c3203f7be00a06dc0.png" alt="Interface"></li>
+</ul>
+<h3 id="为什么要用jupyter">为什么要用Jupyter？</h3>
+<ul>
+<li>文字记录、代码脚本、图片输出全部在一个文档中完成</li>
+<li>在统一的平台使用不同的Engine</li>
+<li>当你不需要脚本全部运行，更想按功能/代码块逐步调试、观察结果</li>
+</ul>
+<h3 id="安装jupyter">安装Jupyter</h3>
+<h4 id="windows系统">Windows系统</h4>
+<ul>
+<li>
+<p>安装Anaconda：<a href="https://www.anaconda.com/download/success">下载Anaconda</a></p>
+<ul>
+<li>或者选择安装Miniconda，一个精简发行版</li>
+</ul>
+</li>
+<li>
+<p>使用Anaconda管理环境</p>
+</li>
+<li>
+<p>Anaconda配置文件</p>
+<blockquote>
+<p>默认位置：<code>C:\User\用户名\.condarc</code></p>
+</blockquote>
+<pre><code class="language-yaml"><span class="hljs-attr">channels:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">conda-forge</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">defaults</span>
+<span class="hljs-attr">channel_priority:</span> <span class="hljs-string">flexible</span>
+<span class="hljs-attr">show_channel_urls:</span> <span class="hljs-literal">true</span>
+
+<span class="hljs-comment"># 把环境与缓存放在 $HOME</span>
+<span class="hljs-attr">envs_dirs:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">~/.conda/envs</span>
+<span class="hljs-attr">pkgs_dirs:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">~/.conda/pkgs</span>
+
+<span class="hljs-comment"># 使用清华镜像</span>
+<span class="hljs-attr">default_channels:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span>
+<span class="hljs-attr">custom_channels:</span>
+  <span class="hljs-attr">conda-forge:</span> <span class="hljs-string">https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span>
+  <span class="hljs-attr">bioconda:</span>    <span class="hljs-string">https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span>
+</code></pre>
+</li>
+<li>
+<p>待更新...</p>
+</li>
+</ul>
+<h4 id="命令行">命令行</h4>
+<ul>
+<li>
+<p>安装Python</p>
+</li>
+<li>
+<p>在命令行中安装Jupyter Lab</p>
+<pre><code class="language-bash">pip install jupyterlab
+jupyter lab
+</code></pre>
+</li>
+</ul>
+<h3 id="使用jupyter">使用Jupyter</h3>
+<h4 id="在浏览器上使用jupyter">在浏览器上使用Jupyter</h4>
+<p>确保安装完成后，启动Jupyter Lab，在浏览器中输入地址：<a href="http://localhost:8888">http://localhost:8888</a></p>
+<h2 id="9-vs-code">9. VS Code</h2>
+<h3 id="vs-code是干嘛的">VS Code是干嘛的？</h3>
+<ul>
+<li>轻量编辑器，可以集成写各种不同语言的代码、Markdown文档</li>
+<li>内置AI功能(GitHub Copilot)，代码生成、自动补全
+<ul>
+<li>有钱有闲可以尝试<code>Codex</code>(OpenAI的编程AI)</li>
+</ul>
+</li>
+<li><a href="https://code.visualstudio.com/Download">下载VS Code</a></li>
+<li>安装<code>Chinese (Simplified)</code>、<code>GitHub Copilot</code>、<code>Data Wrangler</code>插件</li>
+</ul>
+<h3 id="在vs-code里用python">在VS Code里用Python</h3>
+<ul>
+<li>安装<code>Python</code>、<code>Pylance</code>插件</li>
+<li>配置默认Python解释器路径<br>
+<img src="https://pic1.imgdb.cn/item/68fde57d3203f7be00a06887.png" alt="配置Python解释器"></li>
+</ul>
+<h3 id="在vs-code里用r">在VS Code里用R</h3>
+<ul>
+<li>
+<p>在R中安装<code>languageserver</code>、<code>IRkernel</code>包</p>
+<pre><code class="language-R">install.package<span class="hljs-punctuation">(</span><span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;languageserver&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-string">&quot;IRkernel&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-string">&quot;httpd&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+<span class="hljs-comment">#注册Jupyter的R内核</span>
+IRkernel<span class="hljs-operator">::</span>installspec<span class="hljs-punctuation">(</span>displayname<span class="hljs-operator">=</span><span class="hljs-string">&quot;R (Jupyter)&quot;</span><span class="hljs-punctuation">)</span>
+</code></pre>
+</li>
+<li>
+<p>在VS Code安装<code>R</code>、<code>R Debugger</code>、<code>R Extension Pack</code>插件</p>
+</li>
+<li>
+<p>（可选）安装radian</p>
+<ul>
+<li>
+<p>这是一个基于Python的R终端，在VS Code环境下可以代替默认的R终端，有自动补全等功能</p>
+</li>
+<li>
+<p>配置Rterm（VS Code中使用的R终端）<br>
+<img src="https://pic1.imgdb.cn/item/68fde4d13203f7be00a0684f.png" alt="配置Rterm"></p>
+<ul>
+<li>如果radian无法显示中文，在配置文件中设置utf8编码</li>
+</ul>
+<pre><code class="language-R"><span class="hljs-comment"># .Rprofile</span>
+is_uft8_support <span class="hljs-operator">&lt;-</span> grepl<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;UTF-8|utf8&quot;</span><span class="hljs-punctuation">,</span> Sys.getenv<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;LANG&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span>
+ignore.case <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">,</span> perl <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span>
+R.version<span class="hljs-operator">$</span>major <span class="hljs-operator">&gt;=</span> <span class="hljs-number">4L</span> <span class="hljs-operator">&amp;&amp;</span> 
+R.version<span class="hljs-operator">$</span>minor <span class="hljs-operator">&gt;=</span> <span class="hljs-number">2.0</span>
+
+<span class="hljs-keyword">if</span> <span class="hljs-punctuation">(</span>is_uft8_support<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">{</span>
+    suppressWarnings<span class="hljs-punctuation">(</span>Sys.setlocale<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;LC_ALL&quot;</span><span class="hljs-punctuation">,</span> Sys.getenv<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;LANG&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>配置VS Code的R插件</p>
+<ul>
+<li>配置Rpath<br>
+<img src="https://pic1.imgdb.cn/item/68fde4d13203f7be00a0684e.png" alt="配置Rpath"></li>
+<li>配置R在VS Code中的画图功能<br>
+<img src="https://pic1.imgdb.cn/item/68fde4d13203f7be00a06850.png" alt="设置画图功能"></li>
+</ul>
+</li>
+</ul>
+<h3 id="在vs-code里用matlab">在VS Code里用MATLAB</h3>
+<ul>
+<li>安装<code>MATLAB</code>、<code>matlab-formatter</code>插件</li>
+<li>配置MATLABl路径<br>
+<img src="https://pic1.imgdb.cn/item/68fde4d13203f7be00a06851.png" alt="配置MATLAB路径"></li>
+</ul>
+<h3 id="在vs-code里用jupyter">在VS Code里用Jupyter</h3>
+<ul>
+<li>安装<code>Jupyter</code>、<code>Jupyter PowerToys</code>、<code>JupyterHub</code>插件</li>
+</ul>
+<h3 id="待更新">待更新</h3>
+<h2 id="10-使用服务器">10. 使用服务器</h2>
+<h3 id="为什么使用服务器">为什么使用服务器？</h3>
+<p>如果你懒得进行环境配置、不想安装各种软件，想要一个即开即用的平台</p>
+<p>待更新...</p>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            <script async type="text/javascript">
+/* From extension marp-team.marp-vscode */
+(()=>{var G=Object.defineProperty;var J=(f,u,_)=>u in f?G(f,u,{enumerable:!0,configurable:!0,writable:!0,value:_}):f[u]=_;var r=(f,u)=>G(f,"name",{value:u,configurable:!0});var w=(f,u,_)=>J(f,typeof u!="symbol"?u+"":u,_);(()=>{var f={32:(S,E,h)=>{S.exports=h(924)},924:(S,E)=>{"use strict";var h;h={value:!0};const b={h1:{proto:r(()=>HTMLHeadingElement,"proto"),attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:r(()=>HTMLHeadingElement,"proto"),attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:r(()=>HTMLHeadingElement,"proto"),attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:r(()=>HTMLHeadingElement,"proto"),attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:r(()=>HTMLHeadingElement,"proto"),attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:r(()=>HTMLHeadingElement,"proto"),attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:r(()=>HTMLSpanElement,"proto")},pre:{proto:r(()=>HTMLElement,"proto"),style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},z="data-marp-auto-scaling-wrapper",M="data-marp-auto-scaling-svg",T="data-marp-auto-scaling-container",j=class j extends HTMLElement{constructor(){super();w(this,"container");w(this,"containerSize");w(this,"containerObserver");w(this,"svg");w(this,"svgComputedStyle");w(this,"svgPreserveAspectRatio","xMinYMid meet");w(this,"wrapper");w(this,"wrapperSize");w(this,"wrapperObserver");const n=r(s=>([t])=>{const{width:i,height:o}=t.contentRect;this[s]={width:i,height:o},this.updateSVGRect()},"e");this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(n("containerSize")),this.wrapperObserver=new ResizeObserver((...s)=>{n("wrapperSize")(...s),this.flushSvgDisplay()})}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){this.shadowRoot.innerHTML=`
+<style>
+  svg[${M}] { display: block; width: 100%; height: auto; vertical-align: top; }
+  span[${T}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }
+</style>
+<div ${z}>
+  <svg part="svg" ${M}>
+    <foreignObject><span ${T}><slot></slot></span></foreignObject>
+  </svg>
+</div>
+    `.split(/\n\s*/).join(""),this.wrapper=this.shadowRoot.querySelector(`div[${z}]`)??void 0;const n=this.svg;this.svg=this.wrapper?.querySelector(`svg[${M}]`)??void 0,this.svg!==n&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=this.svg?.querySelector(`span[${T}]`)??void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:n}=this;n&&(n.style.display="inline",requestAnimationFrame(()=>{n.style.display=""}))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(n){const s=r(()=>{const t=(()=>{const i=n.getPropertyValue("--preserve-aspect-ratio");return i?i.trim():`x${(({textAlign:o,direction:p})=>{if(o.endsWith("left"))return"Min";if(o.endsWith("right"))return"Max";if(o==="start"||o==="end"){let m=p==="rtl";return o==="end"&&(m=!m),m?"Max":"Min"}return"Mid"})(n)}YMid meet`})();t!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=t,this.updateSVGRect()),n===this.svgComputedStyle&&requestAnimationFrame(s)},"t");s()}updateSVGRect(){let n=Math.ceil(this.containerSize?.width??0);const s=Math.ceil(this.containerSize?.height??0);this.dataset.downscaleOnly!==void 0&&(n=Math.max(n,this.wrapperSize?.width??0));const t=this.svg?.querySelector(":scope > foreignObject");if(t?.setAttribute("width",`${n}`),t?.setAttribute("height",`${s}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${n} ${s}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=n<=0||s<=0?"0":""),this.container){const i=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=i.startsWith("xmid")||i.startsWith("xmax")?"auto":"0",this.container.style.marginRight=i.startsWith("xmi")?"auto":"0"}}};r(j,"s");let k=j;const F=r((d,{attrs:v={},style:n})=>class extends d{constructor(...s){super(...s);for(const[t,i]of Object.entries(v))this.hasAttribute(t)||this.setAttribute(t,i);this._shadow()}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_shadow(){if(!this.shadowRoot)try{this.attachShadow({mode:"open"})}catch(s){if(!(s instanceof Error&&s.name==="NotSupportedError"))throw s}return this.shadowRoot}_update(){const s=this._shadow();if(s){const t=n?`<style>:host { ${n} }</style>`:"";let i="<slot></slot>";const{autoScaling:o}=this.dataset;o!==void 0&&(i=`<marp-auto-scaling exportparts="svg:auto-scaling" ${o==="downscale-only"?"data-downscale-only":""}>${i}</marp-auto-scaling>`),s.innerHTML=t+i}}},"r");let L;const R=Symbol();let H;const C="marpitSVGPolyfill:setZoomFactor,",a=Symbol(),l=Symbol(),e=r(()=>{const d=navigator.vendor==="Apple Computer, Inc.",v=d?[g]:[],n={then:r(s=>(d?(async()=>{if(H===void 0){const t=document.createElement("canvas");t.width=10,t.height=10;const i=t.getContext("2d"),o=new Image(10,10),p=new Promise(m=>{o.addEventListener("load",()=>m())});o.crossOrigin="anonymous",o.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await p,i.drawImage(o,0,0),H=i.getImageData(5,5,1,1).data[3]<128}return H})().then(t=>{s?.(t?[g]:[])}):s?.([]),n),"then")};return Object.assign(v,n)},"g");let c,y;function g(d){const v=typeof d=="object"&&d.target||document,n=typeof d=="object"?d.zoom:d;window[l]||(Object.defineProperty(window,l,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",({data:t,origin:i})=>{if(i===window.origin)try{if(t&&typeof t=="string"&&t.startsWith(C)){const[,o]=t.split(","),p=Number.parseFloat(o);Number.isNaN(p)||(y=p)}}catch(o){console.error(o)}}));let s=!1;Array.from(v.querySelectorAll("svg[data-marpit-svg]"),t=>{var i,o,p,m;t.style.transform||(t.style.transform="translateZ(0)");const x=n||y||t.currentScale||1;c!==x&&(c=x,s=x);const B=t.getBoundingClientRect(),{length:Y}=t.children;for(let N=0;N<Y;N+=1){const $=t.children[N];if($.getScreenCTM){const A=$.getScreenCTM();if(A){const Z=(o=(i=$.x)===null||i===void 0?void 0:i.baseVal.value)!==null&&o!==void 0?o:0,U=(m=(p=$.y)===null||p===void 0?void 0:p.baseVal.value)!==null&&m!==void 0?m:0,X=$.children.length;for(let P=0;P<X;P+=1){const W=$.children[P];if(W.tagName==="SECTION"){const{style:D}=W;D.transformOrigin||(D.transformOrigin=`${-Z}px ${-U}px`),D.transform=`scale(${x}) matrix(${A.a}, ${A.b}, ${A.c}, ${A.d}, ${A.e-B.left}, ${A.f-B.top}) translateZ(0.0001px)`;break}}}}}}),s!==!1&&Array.from(v.querySelectorAll("iframe"),({contentWindow:t})=>{t?.postMessage(`${C}${s}`,window.origin==="null"?"*":window.origin)})}r(g,"u");function O({once:d=!1,target:v=document}={}){const n=function(s=document){if(s[a])return s[a];let t=!0;const i=r(()=>{t=!1,delete s[a]},"i");Object.defineProperty(s,a,{configurable:!0,value:i});let o=[],p=!1;(async()=>{try{o=await e()}finally{p=!0}})();const m=r(()=>{for(const x of o)x({target:s});p&&o.length===0||t&&window.requestAnimationFrame(m)},"r");return m(),i}(v);return d?(n(),()=>{}):n}r(O,"v"),c=1,y=void 0;const I=O,q=Symbol(),V=r((d=document)=>{if(typeof window>"u")throw new Error("Marp Core's browser script is valid only in browser context.");if(((t=document)=>{const i=window[R];i||customElements.define("marp-auto-scaling",k);for(const o of Object.keys(b)){const p=`marp-${o}`,m=b[o].proto();(L??(L=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is"),L))&&m!==HTMLElement?i||customElements.define(p,F(m,{style:b[o].style}),{extends:o}):(i||customElements.define(p,F(HTMLElement,b[o])),t.querySelectorAll(`${o}[is="${p}"]`).forEach(x=>{x.outerHTML=x.outerHTML.replace(new RegExp(`^<${o}`,"i"),`<${p}`).replace(new RegExp(`</${o}>$`,"i"),`</${p}>`)}))}window[R]=!0})(d),d[q])return d[q];const v=O({target:d}),n=r(()=>{v(),delete d[q]},"n"),s=Object.assign(n,{cleanup:n,update:r(()=>V(d),"update")});return Object.defineProperty(d,q,{configurable:!0,value:s}),s},"y");E.browser=V,h=V,h=I}},u={};function _(S){var E=u[S];if(E!==void 0)return E.exports;var h=u[S]={exports:{}};return f[S](h,h.exports,_),h.exports}r(_,"__webpack_require__");var K={};(()=>{"use strict";var S=_(32);const E="marp_vscode_content_section",h="data-marp-vscode-content-start-line",b="data-marp-vscode-content-end-line";function z(a){a.core.ruler.push(E,l=>{if(l.inlineMode)return;let e=null,c=0,y=0;for(const g of l.tokens)g.map&&(c=g.map[0],y=Math.max(y,...g.map)),g.type==="marpit_slide_open"&&(e&&(e.map&&e.attrSet(h,e.map[0]),e.attrSet(b,c-1)),e=g);e&&(e.map&&e.attrSet(h,e.map[0]),e.attrSet(b,y))})}r(z,"marpVSCodeContentSection");const M="marp-vscode.overflowTracker",T=r(a=>typeof a=="object"&&a!=null&&"type"in a&&a.type===M&&"overflowElements"in a&&Array.isArray(a.overflowElements),"isOverflowTrackerEvent"),C=class C{constructor(l){this.postMessage=l,this.delay=150,this.update()}update(){window.setTimeout(()=>this.detectOverflowElements(),this.delay)}cleanup(){}detectOverflowElements(){const l=[];for(const e of document.querySelectorAll(`section[${h}][${b}]`)){const c=e.scrollWidth-e.clientWidth,y=e.scrollHeight-e.clientHeight;if(c<=0&&y<=0)continue;const g=parseInt(e.getAttribute(h)||"",10),O=parseInt(e.getAttribute(b)||"",10);Number.isNaN(g)||Number.isNaN(O)||l.push({startLine:g,endLine:O})}this.postMessage(M,{overflowElements:l})}};r(C,"OverflowTracker");let k=C;function F(){let a;const l=window.cspAlerter?._messaging?.postMessage||window.styleLoadingMonitor?._poster?.postMessage,e=r(()=>{const c=document.getElementById("__marp-vscode");!!a!=!!c?(document.body.classList.toggle("marp-vscode",!!c),c?a={browser:(0,S.browser)(),overflowTracker:l?new k(l):void 0}:(a?.browser.cleanup(),a?.overflowTracker?.cleanup(),a=void 0)):(a?.browser.update(),a?.overflowTracker?.update()),a?(c&&L(c),R()):H()},"updateCallback");window.addEventListener("load",()=>window.setTimeout(e,100)),window.addEventListener("vscode.markdown.updateContent",e),e()}r(F,"preview");const L=r(a=>{a.querySelectorAll("[is]").forEach(l=>{if(l.nodeName.includes("-")||document.createElement(l.nodeName).constructor!==l.constructor)return;const{outerHTML:c}=l;l.outerHTML=c,console.debug("[marp-vscode] Custom element has been upgraded forcibly:",c.slice(0,c.indexOf(">")+1||void 0))})},"forceUpgradeCustomElements"),R=r(()=>{const a=document.querySelectorAll("style:not(#__marp-vscode-style,#_defaultStyles,[data-marp-vscode-body])"),l=document.querySelectorAll('link[rel="stylesheet"][href]:not([href*="marp-vscode"])');a.forEach(e=>{e.closest("#__marp-vscode")||(e.dataset.marpVscodeBody=e.textContent??"",e.textContent="")}),l.forEach(e=>{if(e.closest("#__marp-vscode"))return;const{href:c}=e;e.dataset.marpVscodeHref=c,e.removeAttribute("href")})},"removeStyles"),H=r(()=>{const a=document.querySelectorAll("style[data-marp-vscode-body]"),l=document.querySelectorAll("link[data-marp-vscode-href]");a.forEach(e=>{e.textContent=e.dataset.marpVscodeBody||"",delete e.dataset.marpVscodeBody}),l.forEach(e=>{e.href=e.dataset.marpVscodeHref||"",delete e.dataset.marpVscodeHref})},"restoreStyles");F()})()})();})();
+
+</script>
+
+        </body>
+        </html>
