@@ -3,44 +3,250 @@ site_description: A tidy tutorial for computational psychology
 site_author: Huaqi Yang
 site_url: https://younghachi.github.io/CompPsychTutorial/
 
+repo_name: GitHub
+repo_url: https://github.com/younghachi/CompPsychTutorial
+edit_uri: edit/main/docs/
+
+# 主题配置
 theme:
   name: material
+  language: zh
   palette:
-    - scheme: default
+    # 白天模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-7
-        name: 切换到深色模式
-    - scheme: slate
+        name: 切换至夜间模式
+    # 夜间模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-4
-        name: 切换到浅色模式
+        name: 切换至白天模式
+  font:
+    text: Noto Sans SC
+    code: Fira Code
   features:
-    - navigation.tabs
-    - navigation.sections
-    - navigation.expand
-    - search.suggest
-    - search.highlight
+    - navigation.tabs          # 顶部标签导航
+    - navigation.sections      # 章节展开
+    - navigation.expand        # 默认展开导航
+    - navigation.top           # 返回顶部按钮
+    - navigation.tracking      # URL跟踪当前页面
+    - search.suggest           # 搜索建议
+    - search.highlight         # 搜索结果高亮
+    - search.share             # 分享搜索结果
+    - content.code.copy        # 代码复制按钮
+    - content.code.annotate    # 代码注释
+    - content.tabs.link        # 标签页联动
+    - announce.dismiss         # 可关闭公告
 
+# 插件配置
 plugins:
-  - search
+  - search:
+      lang: 
+        - zh
+        - en
   - minify:
       minify_html: true
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+      fallback_to_build_date: true
 
 markdown_extensions:
-  - admonition
-  - codehilite
+  # Python Markdown 基础扩展
+  - abbr                      # 缩写
+  - admonition                # 提示框
+  - attr_list                 # 属性列表
+  - def_list                  # 定义列表
+  - footnotes                 # 脚注
+  - md_in_html                # HTML内嵌Markdown
   - toc:
-      permalink: true
-  - pymdownx.superfences
-  - pymdownx.tabbed
+      permalink: true          # 标题链接
+      toc_depth: 3             # 目录深度
+  
+  # PyMdown 扩展
+  - pymdownx.arithmatex:      # LaTeX数学公式
+      generic: true
+  - pymdownx.betterem:        # 强调优化
+  - pymdownx.caret:           # 上标
+  - pymdownx.details:         # 折叠详情
+  - pymdownx.emoji:           # 表情符号
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:       # 代码高亮
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite:    # 行内代码高亮
+  - pymdownx.keys:            # 键盘按键
+  - pymdownx.magiclink:       # 自动链接
+  - pymdownx.mark:            # 标记
+  - pymdownx.smartsymbols:    # 智能符号
+  - pymdownx.snippets:        # 代码片段
+  - pymdownx.superfences:     # 超级代码块
+  - pymdownx.tabbed:          # 标签页
+      alternate_style: true
+  - pymdownx.tasklist:        # 任务列表
+      custom_checkbox: true
+  - pymdownx.tilde:           # 下标
 
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# 导航结构
 nav:
   - 首页: index.md
-  - 第一章:
-    - 入门指南: chapter1/intro.md
-    - 基础概念: chapter1/concepts.md
-  - 关于: about.md
+  
+  - 第一部分：学术生存基础:
+    - 概述: part1/overview.md
+    - 第1章 文献搜索与获取:
+      - 1.1 学术搜索的基础语法: part1/ch1/1-1-search-basics.md
+      - 1.2 AI辅助文献发现: part1/ch1/1-2-ai-discovery.md
+      - 1.3 获取文献全文: part1/ch1/1-3-access.md
+      - 1.4 批判性评估AI推荐: part1/ch1/1-4-ai-critique.md
+    - 第2章 文献阅读与知识管理:
+      - 2.1 阅读策略的三遍法: part1/ch2/2-1-reading.md
+      - 2.2 AI增强阅读: part1/ch2/2-2-ai-reading.md
+      - 2.3 建立个人知识库: part1/ch2/2-3-knowledge-base.md
+      - 2.4 从文献到研究想法: part1/ch2/2-4-ideation.md
+    - 第3章 提示词工程:
+      - 3.1 为什么需要学习提示词设计: part1/ch3/3-1-why-prompts.md
+      - 3.2 提示词的核心要素: part1/ch3/3-2-prompt-elements.md
+      - 3.3 学术场景的提示词模板库: part1/ch3/3-3-templates.md
+      - 3.4 迭代对话与链式思考: part1/ch3/3-4-iteration.md
+
+  - 第二部分：实验科学的规范化流程:
+    - 概述: part2/overview.md
+    - 第4章 实验设计的基本构件:
+      - 4.1 从现象到变量: part2/ch4/4-1-variables.md
+      - 4.2 实验结构的分层: part2/ch4/4-2-structure.md
+      - 4.3 反应时与准确率: part2/ch4/4-3-measures.md
+      - 4.4 随机化与平衡: part2/ch4/4-4-randomization.md
+      - 4.5 样本量的确定: part2/ch4/4-5-sample-size.md
+    - 第5章 SOP与质量控制:
+      - 5.1 为什么需要SOP: part2/ch5/5-1-why-sop.md
+      - 5.2 实验前SOP: part2/ch5/5-2-pre-exp.md
+      - 5.3 实验中SOP: part2/ch5/5-3-during-exp.md
+      - 5.4 实验后SOP: part2/ch5/5-4-post-exp.md
+      - 5.5 Checklist文化: part2/ch5/5-5-checklist.md
+    - 第6章 行为数据的解读:
+      - 6.1 原始行为数据结构: part2/ch6/6-1-data-structure.md
+      - 6.2 描述性统计: part2/ch6/6-2-descriptive.md
+      - 6.3 数据清洗的伦理: part2/ch6/6-3-cleaning.md
+      - 6.4 可视化探索: part2/ch6/6-4-visualization.md
+      - 6.5 从描述到推断: part2/ch6/6-5-inference.md
+
+  - 第三部分：计算模型:
+    - 概述: part3/overview.md
+    - 第7章 为什么需要计算模型:
+      - 7.1 描述性统计的局限: part3/ch7/7-1-limitations.md
+      - 7.2 理论的形式化: part3/ch7/7-2-formalization.md
+      - 7.3 模型作为数据生成器: part3/ch7/7-3-generator.md
+      - 7.4 模型作为推理引擎: part3/ch7/7-4-inference.md
+    - 第8章 模型的构建与参数拟合:
+      - 8.1 模型结构的设计: part3/ch8/8-1-structure.md
+      - 8.2 模型参数: part3/ch8/8-2-parameters.md
+      - 8.3 拟合的本质: part3/ch8/8-3-fitting.md
+      - 8.4 损失函数与优化: part3/ch8/8-4-optimization.md
+      - 8.5 拟合的实现: part3/ch8/8-5-implementation.md
+    - 第9章 模型的比较、验证与选择:
+      - 9.1 过拟合的直觉: part3/ch9/9-1-overfitting.md
+      - 9.2 模型比较的原则: part3/ch9/9-2-comparison.md
+      - 9.3 模型恢复: part3/ch9/9-3-model-recovery.md
+      - 9.4 参数恢复: part3/ch9/9-4-parameter-recovery.md
+      - 9.5 模型选择的哲学: part3/ch9/9-5-philosophy.md
+    - 第10章 经典认知模型案例解析:
+      - 10.1 Rescorla-Wagner模型: part3/ch10/10-1-rw.md
+      - 10.2 漂移扩散模型（DDM）: part3/ch10/10-2-ddm.md
+      - 10.3 贝叶斯理想观察者: part3/ch10/10-3-bayesian.md
+      - 10.4 强化学习模型: part3/ch10/10-4-rl.md
+      - 10.5 模型应用的完整流程: part3/ch10/10-5-workflow.md
+
+  - 第四部分：神经科学:
+    - 概述: part4/overview.md
+    - 第11章 神经信号的种类与测量原理:
+      - 11.1 时间vs空间分辨率: part4/ch11/11-1-resolution.md
+      - 11.2 EEG/ERP: part4/ch11/11-2-eeg.md
+      - 11.3 fMRI: part4/ch11/11-3-fmri.md
+      - 11.4 NIRS: part4/ch11/11-4-nirs.md
+      - 11.5 其他技术: part4/ch11/11-5-others.md
+    - 第12章 神经数据的分析逻辑:
+      - 12.1 预处理流水线: part4/ch12/12-1-preprocessing.md
+      - 12.2 从信号到特征: part4/ch12/12-2-features.md
+      - 12.3 个体平均vs试次级别: part4/ch12/12-3-aggregation.md
+      - 12.4 多重比较校正: part4/ch12/12-4-correction.md
+    - 第13章 计算神经科学:
+      - 13.1 模型参数的神经相关: part4/ch13/13-1-neural-correlates.md
+      - 13.2 神经约束的模型选择: part4/ch13/13-2-constraints.md
+      - 13.3 生成式神经模型: part4/ch13/13-3-generative.md
+      - 13.4 多模态融合: part4/ch13/13-4-multimodal.md
+
+  - 第五部分：计算机与编程:
+    - 概述: part5/overview.md
+    - 第14章 计算机系统的本质:
+      - 14.1 操作系统作为资源管家: part5/ch14/14-1-os.md
+      - 14.2 路径与目录结构: part5/ch14/14-2-paths.md
+      - 14.3 命令行界面（CLI）: part5/ch14/14-3-cli.md
+      - 14.4 环境变量: part5/ch14/14-4-env.md
+      - 14.5 规范化的体现: part5/ch14/14-5-standardization.md
+    - 第15章 编程的本质与基础:
+      - 15.1 编程=精确指令+自动化: part5/ch15/15-1-essence.md
+      - 15.2 变量、函数、控制流: part5/ch15/15-2-basics.md
+      - 15.3 数据结构: part5/ch15/15-3-data-structures.md
+      - 15.4 模块化思维: part5/ch15/15-4-modularity.md
+      - 15.5 调试与错误处理: part5/ch15/15-5-debugging.md
+      - 15.6 代码即文档: part5/ch15/15-6-documentation.md
+    - 第16章 开发环境与工作流程:
+      - 16.1 IDE作为智能工作台: part5/ch16/16-1-ide.md
+      - 16.2 Git与GitHub: part5/ch16/16-2-git.md
+      - 16.3 环境管理: part5/ch16/16-3-environment.md
+      - 16.4 可重复研究: part5/ch16/16-4-reproducibility.md
+      - 16.5 WSL2: part5/ch16/16-5-wsl.md
+
+  - 第六部分：工具与平台实战:
+    - 概述: part6/overview.md
+    - 第17章 数据分析工具:
+      - 17.1 R/tidyverse: part6/ch17/17-1-r.md
+      - 17.2 Python科学栈: part6/ch17/17-2-python.md
+      - 17.3 统计建模: part6/ch17/17-3-modeling.md
+      - 17.4 可视化: part6/ch17/17-4-visualization.md
+      - 17.5 选择建议: part6/ch17/17-5-choice.md
+    - 第18章 实验编程工具:
+      - 18.1 PsychoPy: part6/ch18/18-1-psychopy.md
+      - 18.2 Psychtoolbox: part6/ch18/18-2-psychtoolbox.md
+      - 18.3 jsPsych: part6/ch18/18-3-jspsych.md
+      - 18.4 实验程序的结构化设计: part6/ch18/18-4-structure.md
+      - 18.5 数据输出与同步: part6/ch18/18-5-data.md
+    - 第19章 模型实现与拟合工具:
+      - 19.1 R认知模型包: part6/ch19/19-1-r.md
+      - 19.2 Python认知模型包: part6/ch19/19-2-python.md
+      - 19.3 MATLAB工具箱: part6/ch19/19-3-matlab.md
+      - 19.4 实用技巧: part6/ch19/19-4-tips.md
+
+  - 第七部分：整合应用:
+    - 第20章 完整研究项目实战:
+      - 20.1 项目背景: part7/ch20/20-1-background.md
+      - 20.2 阶段一：文献综述与预注册: part7/ch20/20-2-prereg.md
+      - 20.3 阶段三：实验设计与SOP: part7/ch20/20-3-design.md
+      - 20.4 阶段四：数据收集与质控: part7/ch20/20-4-collection.md
+      - 20.5 阶段五：行为分析与模型构建: part7/ch20/20-5-analysis.md
+      - 20.6 阶段六：神经测量与模型-脑关联: part7/ch20/20-6-neural.md
+      - 20.7 阶段七：代码实现与版本控制: part7/ch20/20-7-coding.md
+      - 20.8 阶段八：写作、开源与可重复性: part7/ch20/20-8-writing.md
+
+  - 附录:
+    - 附录A：Checklist与模板库: appendix/a-checklists.md
+    - 附录B：快速参考卡片: appendix/b-cheatsheets.md
+    - 附录C：资源导航: appendix/c-resources.md
+
+  - 关于:
+    - 贡献指南: about/contributing.md
+    - 更新日志: about/changelog.md
