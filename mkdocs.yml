@@ -33,8 +33,8 @@ theme:
     code: Fira Code
   features:
     - navigation.tabs          # 顶部标签导航
+    - navigation.tabs.sticky   # 固定标签栏
     - navigation.sections      # 章节展开
-    - navigation.expand        # 默认展开导航
     - navigation.top           # 返回顶部按钮
     - navigation.tracking      # URL跟踪当前页面
     - search.suggest           # 搜索建议
@@ -101,45 +101,45 @@ extra_javascript:
 nav:
   - 首页: index.md
   
-  - 第一部分：学术生存基础:
+  - Part 1 学术基础:
     - 概述: part1/overview.md
     - 第1章 文献搜索与获取: part1/ch1.md
     - 第2章 文献阅读与知识管理: part1/ch2.md
     - 第3章 提示词工程: part1/ch3.md
   
-  - 第二部分：实验科学的规范化流程:
+  - Part 2 实验设计:
     - 概述: part2/overview.md
     - 第4章 实验设计的基本构件: part2/ch4.md
     - 第5章 SOP与质量控制: part2/ch5.md
     - 第6章 行为数据的解读: part2/ch6.md
   
-  - 第三部分：计算模型:
+  - Part 3 计算模型:
     - 概述: part3/overview.md
     - 第7章 为什么需要计算模型: part3/ch7.md
     - 第8章 模型的构建与参数拟合: part3/ch8.md
     - 第9章 模型的比较、验证与选择: part3/ch9.md
     - 第10章 经典认知模型案例解析: part3/ch10.md
   
-  - 第四部分：神经科学:
+  - Part 4 神经科学:
     - 概述: part4/overview.md
     - 第11章 神经信号的种类与测量原理: part4/ch11.md
     - 第12章 神经数据的分析逻辑: part4/ch12.md
     - 第13章 计算神经科学: part4/ch13.md
   
-  - 第五部分：计算机与编程:
+  - Part 5 编程基础:
     - 概述: part5/overview.md
     - 第14章 计算机系统的本质: part5/ch14.md
     - 第15章 编程的本质与基础: part5/ch15.md
     - 第16章 开发环境与工作流程: part5/ch16.md
   
-  - 第六部分：工具与平台实战:
+  - Part 6 工具实战:
     - 概述: part6/overview.md
     - 第17章 数据分析工具: part6/ch17.md
     - 第18章 实验编程工具: part6/ch18.md
     - 第19章 模型实现与拟合工具: part6/ch19.md
     - 第20章 Windows系统下的全套环境: part6/ch20.md
   
-  - 第七部分：整合应用:
+  - Part 7 项目实战:
     - 概述: part7/overview.md
     - 第21章 完整研究项目实战: part7/ch21.md
   
