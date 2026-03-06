@@ -53,10 +53,6 @@ plugins:
         - en
   - minify:
       minify_html: true
-  - git-revision-date-localized:
-      enable_creation_date: true
-      type: date
-      fallback_to_build_date: true
 
 markdown_extensions:
   # Python Markdown 基础扩展
@@ -141,10 +137,11 @@ nav:
     - 第17章 数据分析工具: part6/ch17.md
     - 第18章 实验编程工具: part6/ch18.md
     - 第19章 模型实现与拟合工具: part6/ch19.md
+    - 第20章 Windows系统下的全套环境: part6/ch20.md
   
   - 第七部分：整合应用:
     - 概述: part7/overview.md
-    - 第20章 完整研究项目实战: part7/ch20.md
+    - 第21章 完整研究项目实战: part7/ch21.md
   
   - 附录:
     - 附录A Checklist与模板库: appendix/a.md
