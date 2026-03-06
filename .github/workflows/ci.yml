@@ -24,11 +24,11 @@ jobs:
       
       - uses: actions/cache@v4
         with:
-          key: mkdocs-material-${{ env.cache_id }}
+          key: mkdocs-${{ env.cache_id }}
           path: .cache 
           restore-keys: |
-            mkdocs-material-
+            mkdocs-
             
-      - run: pip install "mkdocs<2.0" mkdocs-material mkdocs-minify-plugin mkdocs-git-revision-date-localized-plugin
+      - run: pip install mkdocs pymdown-extensions
       
       - run: mkdocs gh-deploy --force
