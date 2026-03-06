@@ -51,8 +51,8 @@ plugins:
       lang: 
         - zh
         - en
-  - minify:
-      minify_html: true
+  # - minify:
+  #     minify_html: true
 
 markdown_extensions:
   # Python Markdown 基础扩展
@@ -147,3 +147,8 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/younghachi/CompPsychTutorial
+
+# Material官方推荐的最简化MathJax配置
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
