@@ -117,11 +117,8 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/younghachi/CompPsychTutorial
 
-# MathJax配置：先加载自定义配置，再加载MathJax库
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - assets/javascripts/mathjax.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js（readthedocs主题兼容）
-extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js
-  - assets/javascripts/mathjax
