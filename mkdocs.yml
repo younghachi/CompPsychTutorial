@@ -1,6 +1,6 @@
-site_name: CompPsych
-site_description: A tidy tutorial for computational psychology
-site_author: Huaqi Yang
+site_name: CompPsychTutorial - 计算心理学研究生的入门教程
+site_description: A tidy tutorial for computational psychology graduate student
+site_author: Young Hachi
 site_url: https://younghachi.github.io/CompPsychTutorial/
 
 repo_name: GitHub
@@ -108,9 +108,9 @@ nav:
     - 第21章 完整研究项目实战: part7/ch21.md
   
   - 附录:
-    - 附录A Checklist与模板库: appendix/a.md
-    - 附录B 快速参考卡片: appendix/b.md
-    - 附录C 资源导航: appendix/c.md
+    - 附录A 常见概念: appendix/concepts.md
+    - 附录B 资源导航: appendix/resources.md
+    - 附录C 快速参考卡片: appendix/card.md
 
 extra:
   social:
