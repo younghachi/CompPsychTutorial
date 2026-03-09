@@ -20,6 +20,15 @@
 - 已有丰富科研经验、希望快速获取高阶专题的研究者
 - 只关注工程落地、不关注科研方法论的纯工程开发者
 
+如果你是心理学、认知科学、神经科学的研究生（或本科生），正在学习或使用：
+
+- 实验设计与数据分析
+- 计算建模与参数拟合
+- 神经影像（fMRI、EEG）或生理数据
+- 编程工具（R、Python、MATLAB）
+
+但是电脑在此之前主要被你用来看视频与打游戏，而你完全不知道该从哪里开始工作，那么这份教程就是为你准备的。
+
 ## 教程特点
 
 - 全流程覆盖：从文献阅读到项目落地，覆盖科研完整链条
@@ -34,9 +43,9 @@
 1. Part 1 学术基础：文献检索、阅读、AI 辅助科研
 2. Part 2 实验设计：实验规范与数据质量控制（待更新）
 3. Part 3 计算模型：参数拟合、模型比较与经典模型
-4. Part 4 神经科学：神经信号测量与分析逻辑（待更新）
+4. Part 4 神经科学：神经信号测量与分析逻辑
 5. Part 5 编程基础：OS、环境、包管理、IDE 等核心概念
-6. Part 6 工具实战：MATLAB、R、Python、Jupyter 应用（待更新）
+6. Part 6 工具实战：手把手在Windows上搭建完整科研环境（待更新）
 7. Part 7 项目实战：完整走通一个研究项目（待更新）
 
 推荐初学者先完成：Part 1 → Part 3 → Part 5，再按兴趣深入其他部分。
@@ -60,10 +69,3 @@
 - 提交问题或建议：[GitHub Issues](https://github.com/younghachi/CompPsychTutorial/issues)
 - 贡献内容或修正错误：[Pull Requests](https://github.com/younghachi/CompPsychTutorial/pulls)
 - 支持项目发展：[Star 本项目](https://github.com/younghachi/CompPsychTutorial)
-
-## 致谢
-
-感谢所有为计算心理学教育做出贡献的研究者、开发者和教育者。
-
-### Contributor
-
