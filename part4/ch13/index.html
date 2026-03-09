@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh_CN" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Young Hachi" /><link rel="canonical" href="https://younghachi.github.io/CompPsychTutorial/part4/ch13/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>第13章 计算神经科学 - CompPsychTutorial - 计算心理学研究生的入门教程</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u7b2c13\u7ae0 \u8ba1\u7b97\u795e\u7ecf\u79d1\u5b66";
+        var mkdocs_page_input_path = "part4/ch13.md";
+        var mkdocs_page_url = "/CompPsychTutorial/part4/ch13/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/r.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/matlab.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> CompPsychTutorial - 计算心理学研究生的入门教程
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">首页</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../..#_2">欢迎</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../..#_3">本教程的特点</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../..#_4">🎯 全流程覆盖</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../..#_5">💡 概念优先</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../..#_6">🛠️ 实践导向</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../..#_7">🔗 跨学科整合</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../..#_8">适用人群</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../..#_9">学习路径</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../..#part-1">Part 1 | 学术基础</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../..#part-2">Part 2 | 实验设计</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../..#part-3">Part 3 | 计算模型</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../..#part-4">Part 4 | 神经科学</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../..#part-5">Part 5 | 编程基础</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../..#part-6">Part 6 | 工具实战</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../..#part-7">Part 7 | 项目实战</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../..#_10">如何使用本教程</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../..#_11">初学者路径</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../..#_12">按需查阅</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../..#_13">实践为主</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../..#ai">配合AI学习</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../..#_14">学习建议</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../..#_15">贡献与反馈</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../..#_16">致谢</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 1 学术基础</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part1/overview/">概述</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/overview/#_1">本部分的核心问题</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/overview/#_2">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/overview/#_3">本部分的组织结构</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/overview/#1">第1章 文献搜索与获取</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/overview/#2">第2章 文献阅读与知识管理</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/overview/#3-ai">第3章 提示词工程与AI助研</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/overview/#_4">学习流程</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/overview/#_5">核心概念导读</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/overview/#_6">学术文献的质量维度</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/overview/#_7">为什么需要系统的知识管理</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/overview/#ai">AI的学术角色</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/overview/#_8">与后续部分的联系</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/overview/#_9">常见问题</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/overview/#q1-1-23">Q1: 我可以跳过第1-2章直接学第3章吗？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/overview/#q2">Q2: 学完这一部分就足够了吗？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/overview/#q3">Q3: 我的研究领域不太一样，这些内容还适用吗？</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part1/ch1/">第1章 文献搜索与获取</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/ch1/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/ch1/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/ch1/#_3">正文</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/ch1/#_4">在哪里找文献？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/ch1/#_5">找什么样的文献？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/ch1/#pdf">在哪里找PDF全文？</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/ch1/#_6">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/ch1/#_7">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part1/ch2/">第2章 文献阅读与知识管理</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/ch2/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/ch2/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/ch2/#_3">正文</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/ch2/#_4">为什么要用专门的软件管理文献？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/ch2/#zotero">Zotero</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/ch2/#_7">高效阅读学术论文</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/ch2/#_12">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/ch2/#_13">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part1/ch3/">第3章 提示词工程</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/ch3/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/ch3/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/ch3/#_3">正文</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/ch3/#aiidea">利用AI检验你的研究idea</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/ch3/#ai">让AI成为你的研究助手</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/ch3/#ai_4">有用的AI工具选择</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/ch3/#_5">提示词模板库</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part1/ch3/#ai_5">优化AI对话的核心原则</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/ch3/#_6">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part1/ch3/#_7">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 2 实验设计</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part2/overview/">概述</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/overview/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/overview/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/overview/#_3">正文</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/overview/#_4">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/overview/#_5">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part2/ch4/">第4章 实验设计的基本构件</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/ch4/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/ch4/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/ch4/#_3">正文</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/ch4/#_4">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/ch4/#_5">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part2/ch5/">第5章 SOP与质量控制</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/ch5/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/ch5/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/ch5/#_3">正文</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/ch5/#_4">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/ch5/#_5">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part2/ch6/">第6章 行为数据的解读</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/ch6/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/ch6/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/ch6/#_3">正文</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/ch6/#_4">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part2/ch6/#_5">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 3 计算模型</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part3/overview/">概述</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/overview/#_1">本部分的核心问题</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/overview/#_2">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/overview/#_3">本部分的组织结构</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/overview/#7">第7章 为什么需要计算模型</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/overview/#8">第8章 模型的构建与参数拟合</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/overview/#9">第9章 模型的比较、验证与选择</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/overview/#10">第10章 经典认知模型案例解析（选看）</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/overview/#_4">核心概念导读</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/overview/#_5">三个递进的概念层次</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/overview/#_6">计算模型的根本价值</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/overview/#_7">常见问题</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/overview/#q1">Q1: 我需要很强的数学基础才能学计算模型吗？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/overview/#q2">Q2: 我的研究不涉及建模，学这部分有用吗？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/overview/#q3">Q3: 计算模型和机器学习、深度学习有什么区别？</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part3/ch7/">第7章 为什么需要计算模型</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch7/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch7/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch7/#_3">正文</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch7/#_4">从理论到计算模型</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch7/#_5">计算模型的四大成分</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch7/#_6">需要厘清的概念</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch7/#_7">为什么需要计算模型</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch7/#_8">什么时候应该用计算模型</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch7/#_11">本章小结</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch7/#_12">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch7/#_13">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part3/ch8/">第8章 模型的构建与参数拟合</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch8/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch8/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch8/#_3">正文</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch8/#_4">从理论模型到计算模型：构建过程</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch8/#_5">参数估计的方法</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch8/#_7">参数估计实践中的常见问题</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch8/#_8">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch8/#_9">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part3/ch9/">第9章 模型的比较、验证与选择</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch9/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch9/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch9/#_3">正文</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch9/#_4">为什么要做模型比较与选择？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch9/#_5">评估单个模型的质量</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch9/#_6">模型间的比较</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch9/#_7">模型的验证</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch9/#_8">实践建议</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch9/#_11">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch9/#_12">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part3/ch10/">第10章 经典认知模型案例解析</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch10/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch10/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch10/#_3">正文</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch10/#1">模型1：结构方程模型与线性回归</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch10/#2">模型2：效用模型（经济决策模型）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch10/#3q-learningrw">模型3：强化学习模型（Q-Learning；RW模型）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch10/#4-drift-diffusion-model-ddm">模型4：证据积累模型 (Drift Diffusion Model, DDM)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch10/#5">模型5：卡尔曼滤波器</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch10/#6">模型6：贝叶斯推理模型</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch10/#7">模型7：层次高斯滤波器</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch10/#8">模型8：吸引子模型</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part3/ch10/#_44">如何选择模型？</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch10/#_45">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part3/ch10/#_46">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 4 神经科学</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../overview/">概述</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../overview/#_2">本部分的核心问题</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../overview/#_3">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../overview/#_4">本部分的组织结构</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../overview/#11">第11章 神经信号的种类与测量原理</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../overview/#12">第12章 神经数据的分析逻辑</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../overview/#13">第13章 计算神经科学</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../overview/#_5">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../overview/#_6">正文</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../overview/#_7">为什么心理学研究需要神经科学？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../overview/#_8">本部分的主线</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../overview/#3">与第3部分（计算模型）的衔接</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../overview/#_9">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../overview/#_10">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ch11/">第11章 神经信号的种类与测量原理</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../ch11/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../ch11/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../ch11/#_3">正文</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../ch11/#_4">为什么先学“信号”再学“分析”？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch11/#111">11.1 神经信号到底是什么？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch11/#112">11.2 主流技术全景对照</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch11/#113-eegmeg">11.3 EEG/MEG：为什么“快”？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch11/#114-fmri">11.4 fMRI：为什么“准”？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch11/#115-vs">11.5 直接测量 vs 间接测量</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch11/#116">11.6 从研究问题反推技术选择</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch11/#117">11.7 常见误区</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch11/#118">11.8 小型决策清单（开题可直接用）</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../ch11/#_10">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../ch11/#_11">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ch12/">第12章 神经数据的分析逻辑</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../ch12/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../ch12/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../ch12/#_3">正文</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../ch12/#121">12.1 神经数据分析在做什么？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch12/#122">12.2 通用分析管线</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch12/#123-glm">12.3 GLM：神经数据分析的“工作马”</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch12/#124">12.4 多重比较：最容易低估的风险</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch12/#125">12.5 行为变量如何进入神经分析？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch12/#126">12.6 解码与机器学习分析</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch12/#127-vs">12.7 探索性分析 vs 验证性分析</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch12/#128">12.8 可重复性工作流（建议直接执行）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch12/#129-eeg-fmri">12.9 典型分析模板（EEG 与 fMRI）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../ch12/#1210">12.10 常见失败模式</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../ch12/#_8">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../ch12/#_9">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">第13章 计算神经科学</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">正文</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#131">13.1 什么是计算神经科学？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#132-marr">13.2 Marr 三层次：最重要的理论框架</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#133">13.3 从“相关激活”到“计算变量映射”</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#134">13.4 常见模型家族与用途</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#135-vs">13.5 规范性模型 vs 机制性模型</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#136">13.6 生成模型思维：从“拟合”走向“解释”</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#137-">13.7 行为-神经联合建模的三种常见路线</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#138">13.8 一个最小可执行案例</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#139">13.9 参数可识别性与解释边界</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#1310">13.10 前沿方向（供选题参考）</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 5 编程基础</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part5/overview/">概述</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/overview/#_1">本部分的核心问题</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/overview/#_2">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/overview/#_3">本部分结构</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/overview/#14">第14章 计算机系统的本质</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/overview/#15">第15章 编程的本质与基础</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/overview/#16">第16章 开发环境与工作流程</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/overview/#_4">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/overview/#_5">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part5/ch14/">第14章 计算机系统的本质</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch14/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch14/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch14/#_3">正文</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch14/#_4">用“做饭”理解计算机系统</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch14/#_5">依赖问题：到底在“依赖”什么？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch14/#_6">什么是“依赖冲突”？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch14/#_7">环境是什么？为什么它能解决依赖问题？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch14/#_8">依赖问题的典型报错长什么样？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch14/#_9">三步排查法（新手版）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch14/#_13">一个最小示例：为什么会冲突</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch14/#_14">你真正需要记住的三句话</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch14/#_15">注意事项与常见问题</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch14/#_16">同一段代码在不同机器可能有不一样的结果</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch14/#_17">结果复现不是简单的复制代码</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch14/#_18">必须掌握的三个实践原则</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch14/#_19">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch14/#_20">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part5/ch15/">第15章 编程的本质与基础</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch15/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch15/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch15/#_3">正文</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch15/#_4">编程的本质：把“想法”变成“可执行流程”</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch15/#_5">科研脚本的最小结构</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch15/#_6">为什么“可复现”比“跑通一次”更重要</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch15/#_7">编程基础能力：你真正需要掌握什么</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch15/#_8">调试：如何快速定位问题</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch15/#_9">代码风格与命名规范</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch15/#_10">最小版本管理意识</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch15/#_11">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch15/#_12">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part5/ch16/">第16章 开发环境与工作流程</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch16/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch16/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch16/#_3">正文</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch16/#_4">工具选型：先看任务，再选语言</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch16/#_5">环境配置的通用原则</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch16/#matlabrpython">MATLAB、R、Python 的最低落地流程</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch16/#jupyter_1">Jupyter 与脚本协作建议</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch16/#vs-code">VS Code 工作流建议</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch16/#_6">一套可复现的日常工作流程</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../part5/ch16/#_7">常见坑与快速修复</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch16/#_8">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part5/ch16/#_9">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 6 工具实战</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part6/overview/">概述</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/overview/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/overview/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/overview/#_3">正文</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/overview/#_4">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/overview/#_5">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part6/ch17/">第17章 数据分析工具</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch17/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch17/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch17/#_3">正文</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch17/#_4">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch17/#_5">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part6/ch18/">第18章 实验编程工具</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch18/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch18/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch18/#_3">正文</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch18/#_4">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch18/#_5">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part6/ch19/">第19章 模型实现与拟合工具</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch19/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch19/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch19/#_3">正文</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch19/#_4">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch19/#_5">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part6/ch20/">第20章 Windows系统下的全套环境</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch20/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch20/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch20/#_3">正文</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch20/#_4">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part6/ch20/#_5">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 7 项目实战</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part7/overview/">概述</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part7/overview/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part7/overview/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part7/overview/#_3">正文</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part7/overview/#_4">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part7/overview/#_5">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part7/ch21/">第21章 完整研究项目实战</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../part7/ch21/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part7/ch21/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part7/ch21/#_3">正文</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part7/ch21/#_4">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../part7/ch21/#_5">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">附录</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix/advanced/">附录A 进阶内容</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../appendix/advanced/#1">第1部分</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../appendix/advanced/#wordpowerpoint">在Word/PowerPoint里使用公式</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../appendix/advanced/#latexunicode">Latex/Unicode语法</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../appendix/advanced/#llmai-agent">LLM与AI Agent</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../appendix/advanced/#2">第2部分</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../appendix/advanced/#3">第3部分</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../appendix/advanced/#model-basedmodel-free">基于模型（Model-based）与无模型（Model-free）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../appendix/advanced/#_2">嵌套模型与层次模型</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../appendix/advanced/#_3">马尔科夫性、马尔科夫过程与部分可见马尔科夫</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../appendix/advanced/#_4">生成模型与反应模型</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../appendix/advanced/#4">第4部分</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../appendix/advanced/#41">4.1. 编程语言的基本元素</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../appendix/advanced/#42-debug">4.2. Debug与调试的基本方法</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../appendix/advanced/#5">第5部分</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../appendix/advanced/#6">第6部分</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../appendix/advanced/#7">第7部分</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix/resources/">附录B 资源导航</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../appendix/resources/#_1">学习目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../appendix/resources/#_2">关键概念</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../appendix/resources/#_3">正文</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../appendix/resources/#c1">C1 入门教材（先概念后实现）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../appendix/resources/#c2">C2 常用实现工具（按任务选择）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../appendix/resources/#c3">C3 推荐论文方向（按模型）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../appendix/resources/#c4">C4 最小可复现实践清单</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../appendix/resources/#c5">C5 阅读与复现顺序建议</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../appendix/resources/#_4">小结</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../appendix/resources/#_5">练习与思考</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../appendix/card.md">附录C 快速参考卡片</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">CompPsychTutorial - 计算心理学研究生的入门教程</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part 4 神经科学</li>
+      <li class="breadcrumb-item active">第13章 计算神经科学</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/younghachi/CompPsychTutorial/edit/main/docs/part4/ch13.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="13">第13章 计算神经科学<a class="headerlink" href="#13" title="Permanent link">&para;</a></h1>
+<h2 id="_1">学习目标<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>理解计算神经科学在心理学研究中的角色</li>
+<li>掌握 Marr 三层次与“算法层-实现层”映射思路</li>
+<li>了解常见计算神经模型及其适用场景</li>
+<li>能设计一个行为-神经联合建模的基础方案</li>
+</ul>
+<h2 id="_2">关键概念<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Marr 三层次</li>
+<li>规范性模型与机制性模型</li>
+<li>神经编码与神经解码</li>
+<li>生成模型</li>
+<li>参数可识别性</li>
+</ul>
+<h2 id="_3">正文<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="131">13.1 什么是计算神经科学？<a class="headerlink" href="#131" title="Permanent link">&para;</a></h3>
+<p>如果说认知建模回答的是“行为如何产生”，那么计算神经科学进一步回答：</p>
+<p><strong>这些计算如何在神经系统中实现？</strong></p>
+<p>它不是单纯“跑神经网络”，而是把三类证据连接起来：</p>
+<ol>
+<li>行为数据（选择、RT、学习曲线）</li>
+<li>神经数据（EEG/fMRI/单元活动）</li>
+<li>理论模型（RL、Bayes、DDM、吸引子等）</li>
+</ol>
+<hr />
+<h3 id="132-marr">13.2 Marr 三层次：最重要的理论框架<a class="headerlink" href="#132-marr" title="Permanent link">&para;</a></h3>
+<p>Marr 提出理解认知系统可分三层：</p>
+<ol>
+<li><strong>计算层（computational level）</strong>：系统在解决什么问题？</li>
+<li><strong>算法层（algorithmic level）</strong>：它用什么表示和规则求解？</li>
+<li><strong>实现层（implementational level）</strong>：神经系统如何物理实现？</li>
+</ol>
+<p>在心理学研究中，常见断裂是：</p>
+<ul>
+<li>有行为层模型，但缺神经实现证据</li>
+<li>有神经激活图，但缺算法解释</li>
+</ul>
+<p>计算神经科学的价值就在于补上这条断裂链。</p>
+<hr />
+<h3 id="133">13.3 从“相关激活”到“计算变量映射”<a class="headerlink" href="#133" title="Permanent link">&para;</a></h3>
+<p>早期研究常问：某脑区是否被激活？</p>
+<p>更强的问题是：某脑区是否编码某个计算变量？</p>
+<p>例如在强化学习任务中：</p>
+<div class="arithmatex">\[\delta_t = r_t - Q_t(a_t)\]</div>
+<p>这里 <span class="arithmatex">\(\delta_t\)</span> 是预测误差。我们可以检验：</p>
+<ul>
+<li>EEG 某时间窗振幅是否随 <span class="arithmatex">\(\delta_t\)</span> 变化</li>
+<li>fMRI 某 ROI 的 BOLD 是否与 <span class="arithmatex">\(\delta_t\)</span> 共变</li>
+</ul>
+<p>这类“模型变量 -&gt; 神经信号”的映射，比纯条件对比更接近机制解释。</p>
+<hr />
+<h3 id="134">13.4 常见模型家族与用途<a class="headerlink" href="#134" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>模型家族</th>
+<th>典型问题</th>
+<th>神经实现线索</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>强化学习（RL）</td>
+<td>试错学习、奖惩更新</td>
+<td>纹状体/中脑多巴胺与预测误差</td>
+</tr>
+<tr>
+<td>贝叶斯模型</td>
+<td>不确定性推断、信念更新</td>
+<td>前额叶和顶叶中的精度/不确定性编码</td>
+</tr>
+<tr>
+<td>DDM/证据积累</td>
+<td>速度-准确率权衡</td>
+<td>前额叶与顶叶积累信号</td>
+</tr>
+<tr>
+<td>吸引子模型</td>
+<td>工作记忆维持、竞争决策</td>
+<td>递归兴奋与抑制平衡、持续活动</td>
+</tr>
+<tr>
+<td>预测编码框架</td>
+<td>感知与层级误差传播</td>
+<td>自上而下预测与自下而上误差回路</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="135-vs">13.5 规范性模型 vs 机制性模型<a class="headerlink" href="#135-vs" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>规范性模型（normative）</strong>：在理想条件下“应该怎么做”（如最优贝叶斯）</li>
+<li><strong>机制性模型（mechanistic）</strong>：系统“实际上怎么实现”（如有噪声、有资源约束）</li>
+</ol>
+<p>优秀研究通常把二者结合：</p>
+<ul>
+<li>先用规范性模型定义任务计算目标</li>
+<li>再用机制模型解释真实偏差和神经实现</li>
+</ul>
+<hr />
+<h3 id="136">13.6 生成模型思维：从“拟合”走向“解释”<a class="headerlink" href="#136" title="Permanent link">&para;</a></h3>
+<p>一个模型至少应做到两件事：</p>
+<ol>
+<li>能生成类似行为数据</li>
+<li>能解释神经指标的变化趋势</li>
+</ol>
+<p>这要求你不仅做后验相关，还要做模拟检验：</p>
+<ul>
+<li>用拟合参数生成行为</li>
+<li>生成潜在变量轨迹（如 <span class="arithmatex">\(Q_t\)</span>, <span class="arithmatex">\(\delta_t\)</span>, 不确定性）</li>
+<li>对照真实神经信号看趋势是否一致</li>
+</ul>
+<p>如果模型只能拟合行为，却无法解释神经数据，机制解释力就有限。</p>
+<hr />
+<h3 id="137-">13.7 行为-神经联合建模的三种常见路线<a class="headerlink" href="#137-" title="Permanent link">&para;</a></h3>
+<h4 id="a">路线A：顺序式（最常见）<a class="headerlink" href="#a" title="Permanent link">&para;</a></h4>
+<ol>
+<li>先拟合行为模型</li>
+<li>提取 trial-level 潜变量</li>
+<li>在神经分析中作为回归量</li>
+</ol>
+<p>优点：实现简单。缺点：行为拟合误差不会反馈到神经层。</p>
+<h4 id="b">路线B：层次联合模型（更完整）<a class="headerlink" href="#b" title="Permanent link">&para;</a></h4>
+<p>在一个概率模型中同时建模行为与神经观测：</p>
+<div class="arithmatex">\[p(behavior, neural | \theta) = p(behavior|\theta)p(neural|\theta)\]</div>
+<p>优点：参数共享、不确定性传播更合理。缺点：建模与计算复杂。</p>
+<h4 id="c">路线C：状态空间神经模型<a class="headerlink" href="#c" title="Permanent link">&para;</a></h4>
+<p>把隐藏认知状态作为动态变量，行为与神经都是该状态的观测通道。</p>
+<p>优点：统一时间过程解释。缺点：对数据质量要求高。</p>
+<hr />
+<h3 id="138">13.8 一个最小可执行案例<a class="headerlink" href="#138" title="Permanent link">&para;</a></h3>
+<p>研究问题：人在波动环境中的奖励学习如何实现？</p>
+<p><strong>步骤</strong>：</p>
+<ol>
+<li>行为任务：二选一赌博，奖励概率随区块变化</li>
+<li>行为模型：比较 RL 与卡尔曼滤波器</li>
+<li>模型比较：LOO-CV 或 AIC/BIC</li>
+<li>神经映射：用 <span class="arithmatex">\(\delta_t\)</span> 与不确定性做 EEG/fMRI 回归</li>
+<li>机制判断：<ul>
+<li>若预测误差信号显著但不确定性不显著，偏向 RL 解释</li>
+<li>若二者都显著且学习率动态变化，偏向卡尔曼类解释</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="139">13.9 参数可识别性与解释边界<a class="headerlink" href="#139" title="Permanent link">&para;</a></h3>
+<p>联合建模常见陷阱：</p>
+<ol>
+<li>参数太多，数据不够，导致不可识别</li>
+<li>两个模型都能解释数据，难以区分</li>
+<li>神经变量与行为变量高度共线</li>
+</ol>
+<p>最低限度应做：</p>
+<ul>
+<li>参数恢复</li>
+<li>模型恢复</li>
+<li>稳健性分析（不同先验、不同预处理）</li>
+</ul>
+<hr />
+<h3 id="1310">13.10 前沿方向（供选题参考）<a class="headerlink" href="#1310" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>神经调控 + 计算模型</strong>：TMS/tDCS 干预模型参数</li>
+<li><strong>精神病理计算表型</strong>：用模型参数刻画症状维度</li>
+<li><strong>闭环实验</strong>：根据实时神经信号在线更新任务难度</li>
+<li><strong>大模型与神经表示对齐</strong>：比较人工网络与大脑表征结构</li>
+</ol>
+<h2 id="_4">小结<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>计算神经科学的核心任务是把“行为算法”和“神经实现”连接成可检验链条。</li>
+<li>Marr 三层次提供了组织研究问题的主轴，模型变量映射提供了落地方法。</li>
+<li>真正有解释力的研究，不只报告激活，更要验证模型在行为和神经层的一致性。</li>
+</ul>
+<h2 id="_5">练习与思考<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ol>
+<li>用 Marr 三层次重写你自己的一个研究问题，每层至少写出一个可检验假设。</li>
+<li>针对 RL 与卡尔曼两种学习模型，设计一个可以区分它们的神经指标分析方案。</li>
+<li>设想一个“行为 + EEG”联合建模项目，列出你的参数恢复与模型恢复计划。</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ch12/" class="btn btn-neutral float-left" title="第12章 神经数据的分析逻辑"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../part5/overview/" class="btn btn-neutral float-right" title="概述">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/younghachi/CompPsychTutorial" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../ch12/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../part5/overview/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="../../assets/javascripts/mathjax.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
